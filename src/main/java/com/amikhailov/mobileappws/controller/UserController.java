@@ -1,12 +1,12 @@
-package controller;
+package com.amikhailov.mobileappws.controller;
 
 import com.amikhailov.mobileappws.service.UserService;
 import com.amikhailov.mobileappws.shared.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ui.model.request.UserDetailsRequestModel;
-import ui.model.response.UserRest;
+import com.amikhailov.mobileappws.model.request.UserDetailsRequestModel;
+import com.amikhailov.mobileappws.model.response.UserRest;
 
 @RestController
 @RequestMapping("/users") //http://localhost:8080/users
