@@ -1,4 +1,4 @@
-package com.amikhailov.mobileappws;
+package com.amikhailov.mobileappws.io.repositories;
 
 import com.amikhailov.mobileappws.io.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;

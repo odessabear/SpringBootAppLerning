@@ -1,6 +1,6 @@
 package com.amikhailov.mobileappws.service.impl;
 
-import com.amikhailov.mobileappws.UserRepository;
+import com.amikhailov.mobileappws.io.repositories.UserRepository;
 import com.amikhailov.mobileappws.io.entity.UserEntity;
 import com.amikhailov.mobileappws.service.UserService;
 import com.amikhailov.mobileappws.shared.dto.UserDto;
@@ -45,6 +45,16 @@ public class UserServiceImpl implements UserService {
         UserDto returnValue = new UserDto();
         BeanUtils.copyProperties(storedUserDetails, returnValue);
 
+        return returnValue;
+    }
+
+    @Override
+    public UserDto getUser(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+
+        if (userRepository== null) throw new UsernameNotFoundException(email);
+        UserDto returnValue = new UserDto();
+        BeanUtils.copyProperties(userEntity,returnValue);
         return returnValue;
     }
 

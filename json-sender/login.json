@@ -1,0 +1,9 @@
+/*
+POST http://localhost:8080/login
+Accept: application/hal+json
+Content-type: application/json
+
+{
+  "userName": "{{userName}}",
+  "scope": "{{scope}}"
+}*/
