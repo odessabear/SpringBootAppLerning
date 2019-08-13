@@ -26,7 +26,7 @@ public class MobileAppWsApplication {
 		return new SpringApplicationContext();
 	}
 
-	@Bean("AppProperties")
+	@Bean(name = "AppProperties")
 	public AppProperties getAppProperties(){
 		return new AppProperties();
 	}
