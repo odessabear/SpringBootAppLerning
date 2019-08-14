@@ -1,7 +1,10 @@
 package com.amikhailov.mobileappws.service.impl;
 
+import com.amikhailov.mobileappws.exceptions.UserServiceException;
 import com.amikhailov.mobileappws.io.repositories.UserRepository;
 import com.amikhailov.mobileappws.io.entity.UserEntity;
+import com.amikhailov.mobileappws.model.response.ErrorMessage;
+import com.amikhailov.mobileappws.model.response.ErrorMessages;
 import com.amikhailov.mobileappws.service.UserService;
 import com.amikhailov.mobileappws.shared.dto.UserDto;
 import com.amikhailov.mobileappws.shared.dto.Utils;
@@ -65,6 +68,23 @@ public class UserServiceImpl implements UserService {
 
         if (userEntity == null) throw new UsernameNotFoundException(userId);
         BeanUtils.copyProperties(userEntity, returnValue);
+        return returnValue;
+    }
+
+    @Override
+    public UserDto updateUser(String userId, UserDto user) {
+
+        UserDto returnValue = new UserDto();
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        if (userEntity == null) throw new UserServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setLastName(user.getLastName());
+        UserEntity updatedUserDetails = userRepository.save(userEntity);
+
+        BeanUtils.copyProperties(updatedUserDetails, returnValue);
+
         return returnValue;
     }
 
